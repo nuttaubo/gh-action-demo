@@ -1,13 +1,26 @@
 name: Test Github Workflow
-on: push
+
+on:
+  push:
+    branches:
+      - main
+
 jobs:
   Test-jobs:
-    runs-on: ubuntu-lastest
+    runs-on: ubuntu-latest
+
     steps:
-      - name: Run test script
-        run: echo "hello github actions!"
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Hello
+        run: echo "Hello GitHub Actions!"
   second-job:
-    runs-on: windows-lastest
+    runs-on: windows-latest
+
     steps:
-      - name: Run second test script
-        run: echo "hello from the second job!"
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Goodbye
+        run: echo "second job"
