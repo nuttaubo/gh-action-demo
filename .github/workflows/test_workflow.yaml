@@ -5,9 +5,12 @@ on:
     branches: [main]
     paths-ignore:
       - ".github/workflows/*.yaml"
+
   pull_request:
     branches: [main]
-  workflow_dispatch:
+
+  repository_dispatch:
+    types: ["on-demand-test"]
 
 jobs:
   Test-jobs:
@@ -19,12 +22,18 @@ jobs:
 
       - name: Hello
         run: echo "Hello GitHub Actions!"
+
+      - name: Show Payload
+        run: |
+          echo "Status = ${{ github.event.client_payload.status }}"
+
   second-job:
     runs-on: windows-latest
     needs: Test-jobs
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Goodbye
-        run: echo "This job is running on ${{ runner.os }} and it depends on the first job."
+      - name: Windows
+        run: echo "Running on Windows"
