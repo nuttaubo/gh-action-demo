@@ -1,4 +1,4 @@
-name: Test Workflow
+name: Test Github Workflow
 on: push
 jobs:
   Test-jobs:
