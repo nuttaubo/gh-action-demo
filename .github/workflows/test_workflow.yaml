@@ -6,3 +6,8 @@ jobs:
     steps:
       - name: Run test script
         run: echo "hello github actions!"
+  second-job:
+    runs-on: windows-lastest
+    steps:
+      - name: Run second test script
+        run: echo "hello from the second job!"
