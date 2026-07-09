@@ -17,11 +17,10 @@ on:
         default: 'false'
         type: boolean
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
-
+    outputs:
+      build_status: ${{ steps.set_status.outputs.status }}
     steps:
 
       - name: Checkout
@@ -31,6 +30,9 @@ jobs:
         run: |
           echo "Target Environment = ${{ github.event.inputs.env }}"
           echo "Run UI Tests = ${{ github.event.inputs.run_ui_tests }}"
+      - name: set an output status
+        id: set_status
+        run: echo "status=success" >> $GITHUB_OUTPUT
   test:
     runs-on: ubuntu-latest
     needs: build
