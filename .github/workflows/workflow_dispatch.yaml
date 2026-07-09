@@ -1,0 +1,19 @@
+name: Workflow Dispatch Demo
+
+on:
+  workflow_dispatch:
+
+jobs:
+
+  hello:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Print Message
+        run: |
+          echo "Hello GitHub Actions"
