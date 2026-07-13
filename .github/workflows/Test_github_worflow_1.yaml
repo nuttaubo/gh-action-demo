@@ -14,4 +14,14 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Hello World
-        run: echo "Hello, World!"
+        run: echo "Running on ubuntu-latest"
+
+  Second-job:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Windows
+        run: echo "Running on Windows"
